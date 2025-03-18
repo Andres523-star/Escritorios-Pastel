@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>PastelWorks - Inicio</title>
+    <style>
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: #E6D0FA; 
+            margin: 0; 
+            min-height: 100vh; 
+            text-align: center; 
+            overflow-x: hidden; 
+        }
+        nav { 
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            background: #8A4AF3; 
+            padding: 15px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 1px solid #E6D0FA; 
+            z-index: 10; 
+        }
+        nav a { color: #FFFFFF; text-decoration: none; margin: 0 20px; }
+        nav a:hover { color: #D8B9FF; }
+        .logo-nav { color: #FFFFFF; font-weight: bold; font-size: 24px; }
+        .logo { 
+            font-size: 120px; 
+            color: #FFFFFF; 
+            background: #8A4AF3; 
+            padding: 30px 60px; 
+            border-radius: 15px; 
+            margin-top: 100px; 
+            margin-bottom: 40px; 
+            display: inline-block; 
+            animation: fadeIn 1s ease-in; 
+        }
+        .contenido { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 20px 40px; 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: space-around; 
+            color: #333; 
+        }
+        .seccion { 
+            flex: 1; 
+            min-width: 300px; 
+            margin: 20px; 
+            padding: 20px; 
+            background: #F2E8FF; 
+            border-radius: 10px; 
+            animation: slideUp 1s ease-out; 
+        }
+        .seccion h2 { font-size: 32px; color: #8A4AF3; margin-bottom: 15px; }
+        .seccion p { font-size: 18px; line-height: 1.6; }
+        .productos-seccion {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #F2E8FF;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .productos-seccion h2 {
+            font-size: 36px;
+            color: #8A4AF3;
+            margin-bottom: 30px;
+        }
+        .productos-contenedor {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .producto { 
+            flex: 1; 
+            min-width: 220px; 
+            max-width: 250px; 
+            margin: 20px; 
+            padding: 15px; 
+            background: #FFFFFF; 
+            border-radius: 10px; 
+            text-align: center; 
+            text-decoration: none; 
+            color: inherit; 
+            display: block; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+        }
+        .producto:hover { 
+            transform: scale(1.05); 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+        }
+        .producto img { 
+            width: 100%; 
+            height: 150px; 
+            object-fit: cover; 
+            border-radius: 8px; 
+            margin-bottom: 10px; 
+        }
+        .producto h3 { 
+            font-size: 22px; 
+            color: #8A4AF3; 
+            margin: 10px 0; 
+        }
+        .producto p { 
+            font-size: 16px; 
+            color: #333; 
+            margin: 5px 0; 
+        }
+        .precio { 
+            font-weight: bold; 
+            color: #C78DFF; 
+        }
+        .reseñas { 
+            max-width: 1200px; 
+            margin: 0 auto 40px; 
+            padding: 20px; 
+            overflow: hidden; 
+            position: relative; 
+            height: 300px; 
+        }
+        .carrusel { 
+            display: flex; 
+            white-space: nowrap; 
+            animation: girar 25s linear infinite; 
+            width: calc(330px * 10); 
+        }
+        .reseña { 
+            display: inline-flex; 
+            flex-direction: column; 
+            width: 300px; 
+            margin: 0 15px; 
+            padding: 20px; 
+            background: #F2E8FF; 
+            border-radius: 10px; 
+            text-align: left; 
+            white-space: normal; 
+            transition: all 1s ease; 
+            opacity: 0.3; 
+            transform: scale(0.85); 
+        }
+        .reseña-central { 
+            width: 350px; 
+            transform: scale(1.15); 
+            opacity: 1; 
+            background: #F2E8FF; 
+            z-index: 1; 
+        }
+        .reseña p { font-size: 16px; color: #333; margin: 5px 0; }
+        .perfil { 
+            width: 40px; 
+            height: 40px; 
+            background: #C78DFF; 
+            color: #FFFFFF; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 20px; 
+            margin-right: 10px; 
+            float: left; 
+        }
+        .estrellas { font-size: 24px; color: #C78DFF; margin-top: 10px; }
+        @keyframes fadeIn { 
+            from { opacity: 0; } 
+            to { opacity: 1; } 
+        }
+        @keyframes slideUp { 
+            from { transform: translateY(50px); opacity: 0; } 
+            to { transform: translateY(0); opacity: 1; } 
+        }
+        @keyframes girar { 
+            0% { transform: translateX(0); } 
+            100% { transform: translateX(-50%); } 
+        }
+        .carrusel:hover { animation-play-state: paused; }
+        .carrusel .reseña:nth-child(2), 
+        .carrusel .reseña:nth-child(7) { 
+            width: 350px; 
+            transform: scale(1.15); 
+            opacity: 1; 
+            background: #F2E8FF; 
+        }
+        .carrusel .reseña:nth-child(1), 
+        .carrusel .reseña:nth-child(3), 
+        .carrusel .reseña:nth-child(6), 
+        .carrusel .reseña:nth-child(8) { 
+            opacity: 0.5; 
+            transform: scale(0.95); 
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo-nav">PastelWorks</div>
+        <div>
+            <a href="inicio.html">Inicio</a>
+            <a href="#productos">Productos</a>
+            <a href="informacion.html">Información</a>
+        </div>
+    </nav>
+    <div class="logo">PastelWorks</div>
+    <div class="contenido">
+        <div class="seccion">
+            <h2>Transforma tu espacio</h2>
+            <p>Imagina un escritorio que no solo organiza tu vida, sino que la hace brillar. En PastelWorks, cada diseño combina modernidad y funcionalidad con un toque vibrante que despierta tu creatividad. ¡Tu rincón perfecto está a un paso!</p>
+        </div>
+        <div class="seccion">
+            <h2>Diseño que inspira</h2>
+            <p>Olvídate de lo aburrido: nuestros escritorios son una explosión de estilo y comodidad. Con madera sostenible, ajustes de altura y conexiones integradas, trabajas como quieres y donde quieras. ¡Haz que cada día cuente!</p>
+        </div>
+        <div class="seccion">
+            <h2>Tu toque personal</h2>
+            <p>Elige PastelWorks y dale vida a tu espacio con colores vivos como el morado. Hechos a mano en Springfield, estos escritorios son más que muebles: son una declaración de quién eres. ¿Listo para destacar?</p>
+        </div>
+    </div>
+    <div class="productos-seccion" id="productos">
+        <h2>Nuestros Productos</h2>
+        <div class="productos-contenedor">
+            <a href="producto1.html" class="producto" target="_blank">
+                <img src="https://via.placeholder.com/250x150?text=Mesa+Nórdica+Blanca" alt="Mesa Nórdica Blanca">
+                <h3>Mesa Nórdica Blanca</h3>
+                <p class="precio">MXN 4,500 / USD 225</p>
+            </a>
+            <a href="producto2.html" class="producto" target="_blank">
+                <img src="https://via.placeholder.com/250x150?text=Mesa+DIM+Azul" alt="Mesa DIM Azul">
+                <h3>Mesa DIM Azul</h3>
+                <p class="precio">MXN 3,800 / USD 190</p>
+            </a>
+            <a href="producto3.html" class="producto" target="_blank">
+                <img src="https://via.placeholder.com/250x150?text=Mesa+BOSQUE+Natural" alt="Mesa BOSQUE Natural">
+                <h3>Mesa BOSQUE Natural</h3>
+                <p class="precio">MXN 5,200 / USD 260</p>
+            </a>
+            <a href="producto4.html" class="producto" target="_blank">
+                <img src="https://via.placeholder.com/250x150?text=Mesa+ÁUREA+Celeste" alt="Mesa ÁUREA Celeste">
+                <h3>Mesa ÁUREA Celeste</h3>
+                <p class="precio">MXN 4,200 / USD 210</p>
+            </a>
+            <a href="producto5.html" class="producto" target="_blank">
+                <img src="https://via.placeholder.com/250x150?text=Mesa+VIVO+Gris" alt="Mesa VIVO Gris">
+                <h3>Mesa VIVO Gris</h3>
+                <p class="precio">MXN 4,800 / USD 240</p>
+            </a>
+        </div>
+    </div>
+    <div class="reseñas">
+        <div class="carrusel">
+            <div class="reseña">
+                <div class="perfil">LG</div>
+                <p>"Compré la Mesa NÓRDICA Blanca y transformó mi oficina. Es elegante, práctica y el ajuste de altura es un sueño. ¡Lo recomiendo a todos!"</p>
+                <p>- Laura G.</p>
+                <div class="estrellas">★★★★★</div>
+            </div>
+            <div class="reseña reseña-central">
+                <div class="perfil">CM</div>
+                <p>"La Mesa DIM Azul es perfecta para mi espacio pequeño. Los puertos USB integrados son un detalle genial. PastelWorks realmente sabe lo que hace."</p>
+                <p>- Carlos M.</p>
+                <div class="estrellas">★★★★☆</div>
+            </div>
+            <div class="reseña">
+                <div class="perfil">SR</div>
+                <p>"Me enamoré de la Mesa BOSQUE Natural. La calidad de la madera y el diseño son impecables. Mi productividad ha subido desde que la tengo."</p>
+                <p>- Sofía R.</p>
+                <div class="estrellas">★★★★★</div>
+            </div>
+            <div class="reseña">
+                <div class="perfil">AP</div>
+                <p>"La Mesa ÁUREA Celeste es un sueño para mi estudio. El color y la funcionalidad son perfectos. ¡No puedo trabajar sin ella!"</p>
+                <p>- Ana P.</p>
+                <div class="estrellas">★★★★★</div>
+            </div>
+            <div class="reseña">
+                <div class="perfil">JD</div>
+                <p>"La Mesa VIVO Gris cambió mi forma de trabajar. Es robusta y moderna, justo lo que necesitaba para largas jornadas."</p>
+                <p>- Juan D.</p>
+                <div class="estrellas">★★★★☆</div>
+            </div>
+            <div class="reseña">
+                <div class="perfil">LG</div>
+                <p>"Compré la Mesa NÓRDICA Blanca y transformó mi oficina. Es elegante, práctica y el ajuste de altura es un sueño. ¡Lo recomiendo a todos!"</p>
+                <p>- Laura G.</p>
+                <div class="estrellas">★★★★★</div>
+            </div>
+            <div class="reseña reseña-central">
+                <div class="perfil">CM</div>
+                <p>"La Mesa DIM Azul es perfecta para mi espacio pequeño. Los puertos USB integrados son un detalle genial. PastelWorks realmente sabe lo que hace."</p>
+                <p>- Carlos M.</p>
+                <div class="estrellas">★★★★☆</div>
+            </div>
+            <div class="reseña">
+                <div class="perfil">SR</div>
+                <p>"Me enamoré de la Mesa BOSQUE Natural. La calidad de la madera y el diseño son impecables. Mi productividad ha subido desde que la tengo."</p>
+                <p>- Sofía R.</p>
+                <div class="estrellas">★★★★★</div>
+            </div>
+            <div class="reseña">
+                <div class="perfil">AP</div>
+                <p>"La Mesa ÁUREA Celeste es un sueño para mi estudio. El color y la funcionalidad son perfectos. ¡No puedo trabajar sin ella!"</p>
+                <p>- Ana P.</p>
+                <div class="estrellas">★★★★★</div>
+            </div>
+            <div class="reseña">
+                <div class="perfil">JD</div>
+                <p>"La Mesa VIVO Gris cambió mi forma de trabajar. Es robusta y moderna, justo lo que necesitaba para largas jornadas."</p>
+                <p>- Juan D.</p>
+                <div class="estrellas">★★★★☆</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
